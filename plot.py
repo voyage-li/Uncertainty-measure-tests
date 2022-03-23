@@ -378,68 +378,68 @@ def get(num, f):
 
 def plot_case1():
     A = [0 for x in range(1, 15)]
-    Uncertainly1 = [0 for x in range(1, 15)]
-    Uncertainly2 = [0 for x in range(1, 15)]
-    Uncertainly3 = [0 for x in range(1, 15)]
-    Uncertainly4 = [0 for x in range(1, 15)]
-    Uncertainly5 = [0 for x in range(1, 15)]
-    Uncertainly6 = [0 for x in range(1, 15)]
-    Uncertainly7 = [0 for x in range(1, 15)]
-    Uncertainly8 = [0 for x in range(1, 15)]
-    Uncertainly9 = [0 for x in range(1, 15)]
-    Uncertainly10 = [0 for x in range(1, 15)]
-    Uncertainly11 = [0 for x in range(1, 15)]
-    Uncertainly12 = [0 for x in range(1, 15)]
-    Uncertainly13 = [0 for x in range(1, 15)]
-    Uncertainly14 = [0 for x in range(1, 15)]
-    Uncertainly15 = [0 for x in range(1, 15)]
-    Uncertainly16 = [0 for x in range(1, 15)]
+    Uncertainty1 = [0 for x in range(1, 15)]
+    Uncertainty2 = [0 for x in range(1, 15)]
+    Uncertainty3 = [0 for x in range(1, 15)]
+    Uncertainty4 = [0 for x in range(1, 15)]
+    Uncertainty5 = [0 for x in range(1, 15)]
+    Uncertainty6 = [0 for x in range(1, 15)]
+    Uncertainty7 = [0 for x in range(1, 15)]
+    Uncertainty8 = [0 for x in range(1, 15)]
+    Uncertainty9 = [0 for x in range(1, 15)]
+    Uncertainty10 = [0 for x in range(1, 15)]
+    Uncertainty11 = [0 for x in range(1, 15)]
+    Uncertainty12 = [0 for x in range(1, 15)]
+    Uncertainty13 = [0 for x in range(1, 15)]
+    Uncertainty14 = [0 for x in range(1, 15)]
+    Uncertainty15 = [0 for x in range(1, 15)]
+    Uncertainty16 = [0 for x in range(1, 15)]
     Deng = [0 for x in range(1, 15)]
     f = open("./src/case1.txt", "r", encoding='utf-8')
     for iter in range(1, 15):
         print('case1', 'Size of A =', iter)
         A[iter-1] = iter
         m, Bel, Pl, Q = get(iter, f)
-        Uncertainly1[iter-1] = definition1(m, Bel, Pl, Q, 15)
-        Uncertainly2[iter-1] = definition2(m, Bel, Pl, Q, 15)
-        Uncertainly3[iter-1] = definition3(m, Bel, Pl, Q, 15)
-        Uncertainly4[iter-1] = definition4(m, Bel, Pl, Q, 15)
-        Uncertainly5[iter-1] = Uncertainly3[iter-1] + Uncertainly4[iter-1]
-        Uncertainly6[iter-1] = definition6(m, Bel, Pl, Q, 15)
-        Uncertainly7[iter-1] = definition7(m, Bel, Pl, Q, 15)
-        Uncertainly8[iter-1] = definition8(m, Bel, Pl, Q, 15)
-        Uncertainly9[iter-1] = definition9(m, Bel, Pl, Q, 15)
-        Uncertainly10[iter-1] = definition10(m, Bel, Pl, Q, 15)
-        Uncertainly11[iter-1] = definition11(m, Bel, Pl, Q, 15) + Uncertainly4[iter-1]
-        Uncertainly12[iter-1] = definition12(m, Bel, Pl, Q, 15) + Uncertainly4[iter-1]
-        Uncertainly13[iter-1] = definition13(m, Bel, Pl, Q, 15)
-        Uncertainly14[iter-1] = definition14(m, Bel, Pl, Q, 15)
-        Uncertainly15[iter-1] = definition15(m, Bel, Pl, Q, 15)
-        Uncertainly16[iter-1] = definition16(m, Bel, Pl, Q, 15)
+        Uncertainty1[iter-1] = definition1(m, Bel, Pl, Q, 15)
+        Uncertainty2[iter-1] = definition2(m, Bel, Pl, Q, 15)
+        Uncertainty3[iter-1] = definition3(m, Bel, Pl, Q, 15)
+        Uncertainty4[iter-1] = definition4(m, Bel, Pl, Q, 15)
+        Uncertainty5[iter-1] = Uncertainty3[iter-1] + Uncertainty4[iter-1]
+        Uncertainty6[iter-1] = definition6(m, Bel, Pl, Q, 15)
+        Uncertainty7[iter-1] = definition7(m, Bel, Pl, Q, 15)
+        Uncertainty8[iter-1] = definition8(m, Bel, Pl, Q, 15)
+        Uncertainty9[iter-1] = definition9(m, Bel, Pl, Q, 15)
+        Uncertainty10[iter-1] = definition10(m, Bel, Pl, Q, 15)
+        Uncertainty11[iter-1] = definition11(m, Bel, Pl, Q, 15) + Uncertainty4[iter-1]
+        Uncertainty12[iter-1] = definition12(m, Bel, Pl, Q, 15) + Uncertainty4[iter-1]
+        Uncertainty13[iter-1] = definition13(m, Bel, Pl, Q, 15)
+        Uncertainty14[iter-1] = definition14(m, Bel, Pl, Q, 15)
+        Uncertainty15[iter-1] = definition15(m, Bel, Pl, Q, 15)
+        Uncertainty16[iter-1] = definition16(m, Bel, Pl, Q, 15)
         Deng[iter-1] = Deng_f(m, Bel, Pl, Q, 15)
     f.close()
     plt.figure(figsize=(12, 8), dpi=72)
     plt.ylim(0, 15)
     plt.xlim(0, 15)
     plt.xlabel("A")
-    plt.ylabel("Uncertainly")
+    plt.ylabel("Uncertainty")
     plt.tick_params(axis='both')
-    plt.plot(A, Uncertainly1, color='r', label='definition1')
-    plt.plot(A, Uncertainly2, color='g', label='definition2')
-    plt.plot(A, Uncertainly3, color='b', label='definition3')
-    plt.plot(A, Uncertainly4, color='y', label='definition4')
-    plt.plot(A, Uncertainly5, color='k', label='definition5')
-    plt.plot(A, Uncertainly6, '-.', color='r', label='definition6')
-    plt.plot(A, Uncertainly7, '-.', color='g', label='definition7')
-    plt.plot(A, Uncertainly8, '-.', color='b', label='definition8')
-    plt.plot(A, Uncertainly9, '-.', color='y', label='definition9')
-    plt.plot(A, Uncertainly10, '-.', color='k', label='definition10')
-    plt.plot(A, Uncertainly11, '--', color='r', label='definition11')
-    plt.plot(A, Uncertainly12, '--', color='g', label='definition12')
-    plt.plot(A, Uncertainly13, '--', color='b', label='definition13')
-    plt.plot(A, Uncertainly14, '--', color='y', label='definition14')
-    plt.plot(A, Uncertainly15, '--', color='k', label='definition15')
-    plt.plot(A, Uncertainly16, ':', color='g', label='definition16')
+    plt.plot(A, Uncertainty1, color='r', label='definition1')
+    plt.plot(A, Uncertainty2, color='g', label='definition2')
+    plt.plot(A, Uncertainty3, color='b', label='definition3')
+    plt.plot(A, Uncertainty4, color='y', label='definition4')
+    plt.plot(A, Uncertainty5, color='k', label='definition5')
+    plt.plot(A, Uncertainty6, '-.', color='r', label='definition6')
+    plt.plot(A, Uncertainty7, '-.', color='g', label='definition7')
+    plt.plot(A, Uncertainty8, '-.', color='b', label='definition8')
+    plt.plot(A, Uncertainty9, '-.', color='y', label='definition9')
+    plt.plot(A, Uncertainty10, '-.', color='k', label='definition10')
+    plt.plot(A, Uncertainty11, '--', color='r', label='definition11')
+    plt.plot(A, Uncertainty12, '--', color='g', label='definition12')
+    plt.plot(A, Uncertainty13, '--', color='b', label='definition13')
+    plt.plot(A, Uncertainty14, '--', color='y', label='definition14')
+    plt.plot(A, Uncertainty15, '--', color='k', label='definition15')
+    plt.plot(A, Uncertainty16, ':', color='g', label='definition16')
     plt.plot(A, Deng, ':', color='r', label='Deng')
     plt.legend()
     try:
@@ -458,66 +458,66 @@ def case1():
 
 def case2():
     A = [0 for x in range(1, 21)]
-    Uncertainly1 = [0 for x in range(1, 21)]
-    Uncertainly2 = [0 for x in range(1, 21)]
-    Uncertainly3 = [0 for x in range(1, 21)]
-    Uncertainly4 = [0 for x in range(1, 21)]
-    Uncertainly5 = [0 for x in range(1, 21)]
-    Uncertainly6 = [0 for x in range(1, 21)]
-    Uncertainly7 = [0 for x in range(1, 21)]
-    Uncertainly8 = [0 for x in range(1, 21)]
-    Uncertainly9 = [0 for x in range(1, 21)]
-    Uncertainly10 = [0 for x in range(1, 21)]
-    Uncertainly11 = [0 for x in range(1, 21)]
-    Uncertainly12 = [0 for x in range(1, 21)]
-    Uncertainly13 = [0 for x in range(1, 21)]
-    Uncertainly14 = [0 for x in range(1, 21)]
-    Uncertainly15 = [0 for x in range(1, 21)]
-    Uncertainly16 = [0 for x in range(1, 21)]
+    Uncertainty1 = [0 for x in range(1, 21)]
+    Uncertainty2 = [0 for x in range(1, 21)]
+    Uncertainty3 = [0 for x in range(1, 21)]
+    Uncertainty4 = [0 for x in range(1, 21)]
+    Uncertainty5 = [0 for x in range(1, 21)]
+    Uncertainty6 = [0 for x in range(1, 21)]
+    Uncertainty7 = [0 for x in range(1, 21)]
+    Uncertainty8 = [0 for x in range(1, 21)]
+    Uncertainty9 = [0 for x in range(1, 21)]
+    Uncertainty10 = [0 for x in range(1, 21)]
+    Uncertainty11 = [0 for x in range(1, 21)]
+    Uncertainty12 = [0 for x in range(1, 21)]
+    Uncertainty13 = [0 for x in range(1, 21)]
+    Uncertainty14 = [0 for x in range(1, 21)]
+    Uncertainty15 = [0 for x in range(1, 21)]
+    Uncertainty16 = [0 for x in range(1, 21)]
     Deng = [0 for x in range(1, 21)]
     for iter in range(1, 21):
         print('case2', 'N =', iter)
         A[iter-1] = iter
         m, Bel, Pl, Q = create_data2(iter)
-        # Uncertainly1[iter-1] = definition1(m, Bel, Pl, Q, iter)
-        # Uncertainly2[iter-1] = definition2(m, Bel, Pl, Q, iter)
-        # Uncertainly3[iter-1] = definition3(m, Bel, Pl, Q, iter)
-        Uncertainly4[iter-1] = definition4(m, Bel, Pl, Q, iter)
-        # Uncertainly5[iter-1] = Uncertainly3[iter-1] + Uncertainly4[iter-1]
-        # Uncertainly6[iter-1] = definition6(m, Bel, Pl, Q, iter)
-        # Uncertainly7[iter-1] = definition7(m, Bel, Pl, Q, iter)
-        # Uncertainly8[iter-1] = definition8(m, Bel, Pl, Q, iter)
-        Uncertainly9[iter-1] = definition9(m, Bel, Pl, Q, iter)
-        # Uncertainly10[iter-1] = definition10(m, Bel, Pl, Q, iter)
-        # Uncertainly11[iter-1] = definition11(m, Bel, Pl, Q, iter) + Uncertainly4[iter-1]
-        # Uncertainly12[iter-1] = definition12(m, Bel, Pl, Q, iter) + Uncertainly4[iter-1]
-        Uncertainly13[iter-1] = definition13(m, Bel, Pl, Q, iter)
-        # Uncertainly14[iter-1] = definition14(m, Bel, Pl, Q, iter)
-        Uncertainly15[iter-1] = definition15(m, Bel, Pl, Q, iter)
-        Uncertainly16[iter-1] = definition16(m, Bel, Pl, Q, iter)
+        # Uncertainty1[iter-1] = definition1(m, Bel, Pl, Q, iter)
+        # Uncertainty2[iter-1] = definition2(m, Bel, Pl, Q, iter)
+        # Uncertainty3[iter-1] = definition3(m, Bel, Pl, Q, iter)
+        Uncertainty4[iter-1] = definition4(m, Bel, Pl, Q, iter)
+        # Uncertainty5[iter-1] = Uncertainty3[iter-1] + Uncertainty4[iter-1]
+        # Uncertainty6[iter-1] = definition6(m, Bel, Pl, Q, iter)
+        # Uncertainty7[iter-1] = definition7(m, Bel, Pl, Q, iter)
+        # Uncertainty8[iter-1] = definition8(m, Bel, Pl, Q, iter)
+        Uncertainty9[iter-1] = definition9(m, Bel, Pl, Q, iter)
+        # Uncertainty10[iter-1] = definition10(m, Bel, Pl, Q, iter)
+        # Uncertainty11[iter-1] = definition11(m, Bel, Pl, Q, iter) + Uncertainty4[iter-1]
+        # Uncertainty12[iter-1] = definition12(m, Bel, Pl, Q, iter) + Uncertainty4[iter-1]
+        Uncertainty13[iter-1] = definition13(m, Bel, Pl, Q, iter)
+        # Uncertainty14[iter-1] = definition14(m, Bel, Pl, Q, iter)
+        Uncertainty15[iter-1] = definition15(m, Bel, Pl, Q, iter)
+        Uncertainty16[iter-1] = definition16(m, Bel, Pl, Q, iter)
         Deng[iter-1] = Deng_f(m, Bel, Pl, Q, iter)
     plt.figure(figsize=(12, 8), dpi=72)
     plt.ylim(0, 5)
     plt.xlim(0, 20)
     plt.xlabel("A")
-    plt.ylabel("Uncertainly")
+    plt.ylabel("Uncertainty")
     plt.tick_params(axis='both')
-    plt.plot(A, Uncertainly1, color='r', label='definition1')
-    plt.plot(A, Uncertainly2, color='g', label='definition2')
-    plt.plot(A, Uncertainly3, color='b', label='definition3')
-    plt.plot(A, Uncertainly4, color='y', label='definition4')
-    plt.plot(A, Uncertainly5, color='k', label='definition5')
-    plt.plot(A, Uncertainly6, '-.', color='r', label='definition6')
-    plt.plot(A, Uncertainly7, '-.', color='g', label='definition7')
-    plt.plot(A, Uncertainly8, '-.', color='b', label='definition8')
-    plt.plot(A, Uncertainly9, '-.', color='y', label='definition9')
-    plt.plot(A, Uncertainly10, '-.', color='k', label='definition10')
-    plt.plot(A, Uncertainly11, '--', color='r', label='definition11')
-    plt.plot(A, Uncertainly12, '--', color='g', label='definition12')
-    plt.plot(A, Uncertainly13, '--', color='b', label='definition13')
-    plt.plot(A, Uncertainly14, '--', color='y', label='definition14')
-    plt.plot(A, Uncertainly15, '--', color='k', label='definition15')
-    plt.plot(A, Uncertainly16, ':', color='g', label='definition16')
+    plt.plot(A, Uncertainty1, color='r', label='definition1')
+    plt.plot(A, Uncertainty2, color='g', label='definition2')
+    plt.plot(A, Uncertainty3, color='b', label='definition3')
+    plt.plot(A, Uncertainty4, color='y', label='definition4')
+    plt.plot(A, Uncertainty5, color='k', label='definition5')
+    plt.plot(A, Uncertainty6, '-.', color='r', label='definition6')
+    plt.plot(A, Uncertainty7, '-.', color='g', label='definition7')
+    plt.plot(A, Uncertainty8, '-.', color='b', label='definition8')
+    plt.plot(A, Uncertainty9, '-.', color='y', label='definition9')
+    plt.plot(A, Uncertainty10, '-.', color='k', label='definition10')
+    plt.plot(A, Uncertainty11, '--', color='r', label='definition11')
+    plt.plot(A, Uncertainty12, '--', color='g', label='definition12')
+    plt.plot(A, Uncertainty13, '--', color='b', label='definition13')
+    plt.plot(A, Uncertainty14, '--', color='y', label='definition14')
+    plt.plot(A, Uncertainty15, '--', color='k', label='definition15')
+    plt.plot(A, Uncertainty16, ':', color='g', label='definition16')
     plt.plot(A, Deng, ':', color='r', label='Deng')
     plt.legend()
     try:
