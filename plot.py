@@ -480,11 +480,11 @@ def case2():
         A[iter-1] = iter
         m, Bel, Pl, Q = create_data2(iter)
         # Uncertainly1[iter-1] = definition1(m, Bel, Pl, Q, iter)
-        Uncertainly2[iter-1] = definition2(m, Bel, Pl, Q, iter)
+        # Uncertainly2[iter-1] = definition2(m, Bel, Pl, Q, iter)
         # Uncertainly3[iter-1] = definition3(m, Bel, Pl, Q, iter)
         Uncertainly4[iter-1] = definition4(m, Bel, Pl, Q, iter)
         # Uncertainly5[iter-1] = Uncertainly3[iter-1] + Uncertainly4[iter-1]
-        Uncertainly6[iter-1] = definition6(m, Bel, Pl, Q, iter)
+        # Uncertainly6[iter-1] = definition6(m, Bel, Pl, Q, iter)
         # Uncertainly7[iter-1] = definition7(m, Bel, Pl, Q, iter)
         # Uncertainly8[iter-1] = definition8(m, Bel, Pl, Q, iter)
         Uncertainly9[iter-1] = definition9(m, Bel, Pl, Q, iter)
