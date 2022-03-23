@@ -1,5 +1,6 @@
 import os
 import sys
+import getopt
 import numpy as np
 from math import e
 from math import exp
@@ -57,7 +58,7 @@ def create_data2(num):
     for iter in range(1, num + 1):
         m[1 << (iter-1)] = 1/num
 
-    for jter in range(1, num+1):
+    for jter in range(1, num + 1):
         i = 1 << (jter-1)
         Bel[i] = 1/num
         i = ~i
@@ -67,6 +68,9 @@ def create_data2(num):
         iter = 1 << (jter-1)
         Pl[iter] = 1-Bel[~iter]
 
+    for jter in range(1, num+1):
+        iter = 1 << (jter-1)
+        Q[iter] = m[iter]
     return m, Bel, Pl, Q
 
 
@@ -248,6 +252,8 @@ def definition12(m, Bel, Pl, Q, num):
 
 
 def definition13(m, Bel, Pl, Q, num):
+    if num == 1:
+        return 0
     U_exp = e
     Temp = e-(1/num**2)*exp(1/num**2)
     C = 0
@@ -332,17 +338,13 @@ def plot3(fun, num):
     try:
         plt.savefig('./result/case3_pic/' + num + '.png')
     except:
-        try:
-            os.system('mkdir ./result/case3_pic')
-        except:
-            os.system('mkdir result')
-            os.system('mkdir ./result/case3_pic')
+        os.system('mkdir -p ./result/case3_pic')
         plt.savefig('./result/case3_pic/' + num + '.png')
     # plt.show()
     plt.close()
 
 
-def get(num):
+def get(num, f):
 
     N1 = 0b000000000011100
     N2 = 0b000000000100000
@@ -362,13 +364,13 @@ def get(num):
     m[N4] = 0.8
 
     for iter in range(0, 1 << 15):
-        number, fre, Type, value = input().split(' ')
+        number, fre, Type, value = f.readline().strip('\n').split(' ')
         Bel[eval(fre)] = eval(value)
     for iter in range(0, 1 << 15):
-        number, fre, Type, value = input().split(' ')
+        number, fre, Type, value = f.readline().strip('\n').split(' ')
         Pl[eval(fre)] = eval(value)
     for iter in range(0, 1 << 15):
-        number, fre, Type, value = input().split(' ')
+        number, fre, Type, value = f.readline().strip('\n').split(' ')
         Q[eval(fre)] = eval(value)
 
     return m, Bel, Pl, Q
@@ -393,10 +395,11 @@ def plot_case1():
     Uncertainly15 = [0 for x in range(1, 15)]
     Uncertainly16 = [0 for x in range(1, 15)]
     Deng = [0 for x in range(1, 15)]
+    f = open("./src/case1.txt", "r", encoding='utf-8')
     for iter in range(1, 15):
         print('case1', 'Size of A =', iter)
         A[iter-1] = iter
-        m, Bel, Pl, Q = get(iter)
+        m, Bel, Pl, Q = get(iter, f)
         Uncertainly1[iter-1] = definition1(m, Bel, Pl, Q, 15)
         Uncertainly2[iter-1] = definition2(m, Bel, Pl, Q, 15)
         Uncertainly3[iter-1] = definition3(m, Bel, Pl, Q, 15)
@@ -414,6 +417,7 @@ def plot_case1():
         Uncertainly15[iter-1] = definition15(m, Bel, Pl, Q, 15)
         Uncertainly16[iter-1] = definition16(m, Bel, Pl, Q, 15)
         Deng[iter-1] = Deng_f(m, Bel, Pl, Q, 15)
+    f.close()
     plt.figure(figsize=(12, 8), dpi=72)
     plt.ylim(0, 15)
     plt.xlim(0, 15)
@@ -476,21 +480,21 @@ def case2():
         A[iter-1] = iter
         m, Bel, Pl, Q = create_data2(iter)
         # Uncertainly1[iter-1] = definition1(m, Bel, Pl, Q, iter)
-        # Uncertainly2[iter-1] = definition2(m, Bel, Pl, Q, iter)
+        Uncertainly2[iter-1] = definition2(m, Bel, Pl, Q, iter)
         # Uncertainly3[iter-1] = definition3(m, Bel, Pl, Q, iter)
         Uncertainly4[iter-1] = definition4(m, Bel, Pl, Q, iter)
         # Uncertainly5[iter-1] = Uncertainly3[iter-1] + Uncertainly4[iter-1]
-        # Uncertainly6[iter-1] = definition6(m, Bel, Pl, Q, iter)
+        Uncertainly6[iter-1] = definition6(m, Bel, Pl, Q, iter)
         # Uncertainly7[iter-1] = definition7(m, Bel, Pl, Q, iter)
         # Uncertainly8[iter-1] = definition8(m, Bel, Pl, Q, iter)
         Uncertainly9[iter-1] = definition9(m, Bel, Pl, Q, iter)
         # Uncertainly10[iter-1] = definition10(m, Bel, Pl, Q, iter)
         # Uncertainly11[iter-1] = definition11(m, Bel, Pl, Q, iter) + Uncertainly4[iter-1]
         # Uncertainly12[iter-1] = definition12(m, Bel, Pl, Q, iter) + Uncertainly4[iter-1]
-        # Uncertainly13[iter-1] = definition13(m, Bel, Pl, Q, iter)
+        Uncertainly13[iter-1] = definition13(m, Bel, Pl, Q, iter)
         # Uncertainly14[iter-1] = definition14(m, Bel, Pl, Q, iter)
         Uncertainly15[iter-1] = definition15(m, Bel, Pl, Q, iter)
-        # Uncertainly16[iter-1] = definition16(m, Bel, Pl, Q, iter)
+        Uncertainly16[iter-1] = definition16(m, Bel, Pl, Q, iter)
         Deng[iter-1] = Deng_f(m, Bel, Pl, Q, iter)
     plt.figure(figsize=(12, 8), dpi=72)
     plt.ylim(0, 5)
@@ -546,7 +550,19 @@ def case3():
 
 
 if __name__ == '__main__':
-    case1()
-    case2()
-    case3()
+    for i in range(1, len(sys.argv)):
+        op = sys.argv[i]
+        if op == "-case1":
+            case1()
+        elif op == "-case2":
+            case2()
+        elif op == "-case3":
+            case3()
+        elif op == "-h":
+            print('\n[Options]')
+            print('\n[-case1] --------------------------------------------------------- case1')
+            print('[-case2] --------------------------------------------------------- case2')
+            print('[-case3] --------------------------------------------------------- case3')
+            print('[-h]     --------------------------------------------------------- help\n')
+            sys.exit(0)
     print('FINISHED !')

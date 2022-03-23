@@ -19,5 +19,6 @@
 - 可以运行程序了
 
   ```bash
-  python plot.py <./src/case1.txt
+  python plot.py -h # 查看命令行参数
+  python plot.py -case1 -case2 -case3 # 运行三个算例
   ```
